@@ -1,0 +1,45 @@
+<!-- templates/turnos/agenda.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agenda de Turnos</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 10px; border: 1px solid #ccc; text-align: left; }
+        .pendiente { background-color: #f0f0f0; }
+        .confirmado { background-color: #add8e6; }
+        .realizado { background-color: #90ee90; }
+        .cancelado { background-color: #f08080; }
+    </style>
+</head>
+<body>
+    <h1>Agenda de Turnos</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Fecha y Hora</th>
+                <th>Cliente</th>
+                <th>Barbero</th>
+                <th>Servicio</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for turno in turnos %}
+            <tr class="{{ turno.estado }}">
+                <td>{{ turno.fechaHora|date:"d/m/Y H:i" }}</td>
+                <td>{{ turno.cliente }}</td>
+                <td>{{ turno.barbero }}</td>
+                <td>{{ turno.servicio }}</td>
+                <td>{{ turno.get_estado_display }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">No hay turnos disponibles.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
