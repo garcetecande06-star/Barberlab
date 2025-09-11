@@ -1,8 +1,8 @@
 from django.contrib import admin
 from django.urls import path
-from apps.cliente.views import IndexView, RegistroClienteView, LoginClienteView
+from apps.cliente.views import IndexView, RegistroClienteView, LoginClienteView, TurnosClienteView
+from apps.barbero.views import AgendaTurnosView
 from apps.valoracion.views import NuevaValoracionView
-from apps.turno.views import AgendaTurnosView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -11,4 +11,5 @@ urlpatterns = [
     path('agenda/', AgendaTurnosView.as_view(), name='agenda_turnos'),
     path('login/', LoginClienteView.as_view(), name='login'),
     path('registro/', RegistroClienteView.as_view(), name='logout'),
+    path('turnoCliente/',TurnosClienteView.as_view(), name='turnosCliente' )
 ]

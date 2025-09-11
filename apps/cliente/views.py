@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView, CreateView
+from django.views.generic import TemplateView, CreateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
@@ -8,6 +8,8 @@ from django.contrib import messages
 from .models import Cliente
 from apps.servicio.models import Servicio
 from apps.valoracion.models import Valoracion
+from django.contrib.auth.mixins import LoginRequiredMixin
+from apps.turno.models import Turno
 
 # ------------------ Index ------------------
 class IndexView(TemplateView):
@@ -65,11 +67,28 @@ class LoginClienteView(View):
         if user is not None:
             login(request, user)
             messages.success(request, f"Bienvenido, {user.cliente.nombre}")
-            return redirect('agenda_turnos')
+            return redirect('turnosCliente')
         else:
             messages.error(request, "Usuario o contraseña incorrectos")
             return render(request, self.template_name)
+        
+# ------------------ TurnosCliente ------------------
+class TurnosClienteView(LoginRequiredMixin, TemplateView):
+    template_name= 'turnosCliente.html'
+    login_url = '/login/'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        # si el usuario está logueado y tiene Cliente asociado
+        if hasattr(self.request.user, 'cliente'):
+            context['turnos'] = Turno.objects.filter(
+                cliente=self.request.user.cliente
+            ).order_by('fechaHora')
+        else:
+            context['turnos'] = Turno.objects.none()  # vacío si no es cliente
+
+        return context
 
 
 

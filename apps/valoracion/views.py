@@ -6,6 +6,6 @@ class NuevaValoracionView(CreateView):
     model = Valoracion
     fields = ['nombre_cliente', 'barbero', 'servicio', 'puntuacion', 'comentario']
     template_name = 'nuevaValoracion.html'
-    success_url = reverse_lazy('index')  # Cambia 'index' por tu vista principal
+    success_url = reverse_lazy('index')  
 
 
