@@ -3,40 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mis Turnos</title>
+    <style>
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 10px; border: 1px solid #ccc; text-align: left; }
+    </style>
 </head>
 <body>
-    <h1>Mis Turnos</h1>
+    <!-- NAVBAR -->
+    <nav id="navbar">
+        <ul>
+            <li><a href="http://127.0.0.1:8000">Inicio</a></li>
+        </ul>
+    <h1>Mis Turnos</h1><a href="http://127.0.0.1:8000/reservarTurno">Reservar</a>
 
-    <div class="turnos-container">
-        {% if turnos %}
-        <table>
-            <thead>
-                <tr>
-                    <th>Fecha y Hora</th>
-                    <th>Servicio</th>
-                    <th>Barbero</th>
-                    <th>Estado</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for turno in turnos %}
-                <tr>
-                    <td>{{ turno.fechaHora|date:"d/m/Y H:i" }}</td>
-                    <td>{{ turno.servicio }}</td>
-                    <td>{{ turno.barbero }}</td>
-                    <td>
-                        <span class="estado {{ turno.estado }}">
-                            {{ turno.get_estado_display }}
-                        </span>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        {% else %}
-            <p class="no-turnos">No tienes turnos registrados.</p>
-        {% endif %}
-    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Fecha y Hora</th>
+                <th>Barbero</th>
+                <th>Servicio</th>
+                <th></th>
+            </tr>
+        </thead>
+        {% for turno in turnos %}
+            <tr class="{{ turno.estado }}">
+                <td>{{ turno.fechaHora|date:"d/m/Y H:i" }}</td>
+                <td>{{ turno.barbero }}</td>
+                <td>{{ turno.servicio }}</td>
+                <td> <a href="{% url 'eliminarTurno' turno.id %}" class=" btn-danger">Eliminar</a></td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">No hay turnos disponibles.</td>
+            </tr>
+            {% endfor %}
+    </table>
 </body>
 </html>

@@ -6,26 +6,25 @@ body {
   padding-top: 60px; 
 }
 
-
 #navbar {
   position: fixed; /* fijo arriba */
   top: 0;
-  left: 0;
   width: 100%;
   background-color: #1F2937;;
   z-index: 1030;
-  padding: 20px 0;
+  padding: 10px 0;
 }
+
 #navbar ul {
-  list-style: none;
   display: flex;
   justify-content: center;
-  margin: 0;
-  padding: 0;
+  flex-wrap: wrap;
 }
+
 #navbar ul li {
   margin: 0 15px;
 }
+
 #navbar ul li a {
   color: white;
   text-decoration: none;
@@ -33,21 +32,18 @@ body {
   font-size: 20px;
   transition: color 0.3s ease;
 }
+
 #navbar ul li a:hover {
   color: #d6336c;
 }
 
-/* Contenedor tarjeta */
 #content-wrapper {
-  background-color: white;
   max-width: 960px;
   margin: 20px auto 60px auto;
   padding: 30px 40px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
   border-radius: 12px;
 }
 
-/* Ajustes para secciones */
 section {
   margin-bottom: 50px;
 }
@@ -64,6 +60,7 @@ section {
     margin: 0 auto;
     border-radius: 8px;
 }
+
 #carouselExampleSlidesOnly {
   max-width: 800px; 
   margin: 0 auto;   
