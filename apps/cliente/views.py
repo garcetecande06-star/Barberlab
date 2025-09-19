@@ -50,7 +50,8 @@ class RegistroClienteView(View):
 
         # Loguear automáticamente
         login(request, user)
-        messages.success(request, "Registro exitoso")
+        # Se elimina el mensaje de éxito aquí para que no se muestre en el login
+        # messages.success(request, "Registro exitoso")
         return redirect('turnosCliente')
 
 # ------------------ Login ------------------
@@ -66,10 +67,18 @@ class LoginClienteView(View):
 
         user = authenticate(request, username=username, password=password)
         if user is not None:
-            login(request, user)
-            messages.success(request, f"Bienvenido, {user.cliente.nombre}")
-            return redirect('turnosCliente')
+            try:
+                # Si la autenticación es exitosa, intenta acceder al perfil de cliente.
+                nombre_cliente = user.cliente.nombre
+                login(request, user)
+                # No se agrega un mensaje de bienvenida
+                return redirect('turnosCliente')
+            except Cliente.DoesNotExist:
+                # Se muestra el mismo mensaje de error genérico para ambos casos de fallo de login.
+                messages.error(request, "Usuario o contraseña incorrectos")
+                return render(request, self.template_name)
         else:
+            # Esto se ejecuta si `authenticate` devuelve None (usuario o contraseña incorrectos).
             messages.error(request, "Usuario o contraseña incorrectos")
             return render(request, self.template_name)
 
@@ -99,7 +108,7 @@ class reservarTurnoView(LoginRequiredMixin, CreateView):
         try:
             form.instance.cliente = Cliente.objects.get(user=self.request.user)
         except Cliente.DoesNotExist:
-            form.add_error(None, "No se encontró un perfil de cliente para este usuario.")
+            form.add_error(None, "La contraseña o usuario son incorrectas.")
             return self.form_invalid(form)
         return super().form_valid(form)
 

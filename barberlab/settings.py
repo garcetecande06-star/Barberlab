@@ -57,22 +57,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'barberlab.wsgi.application'
 
-
 DATABASES = {
     'default': {
         'ENGINE': 'mssql',
-        'NAME': 'Barberlab',
+        'NAME': 'Proyecto',
         'USER': '',
         'PASSWORD': '',
-        'HOST': 'CANDE\\SQLEXPRESS',
+        'HOST': r'EQUIPO\SQLEXPRESS',
         'PORT': '',
         'OPTIONS': {
             'driver': 'ODBC Driver 17 for SQL Server',
         },
     }
 }
-
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',

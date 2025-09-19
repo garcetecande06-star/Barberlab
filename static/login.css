@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #a8dadc 0%, #457b9d 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    color: #333;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-form {
+    background-color: #ffffff;
+    padding: 45px 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+h2 {
+    font-size: 2.2em;
+    margin-bottom: 30px;
+    color: #333;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 0.95em;
+}
+
+label i {
+    margin-right: 8px;
+    color: #457b9d;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 1em;
+    color: #333;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #457b9d;
+    box-shadow: 0 0 0 3px rgba(69, 123, 157, 0.2);
+    outline: none;
+}
+
+.login-button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background-color: #1d3557;
+    color: white;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 25px;
+}
+
+.login-button:hover {
+    background-color: #457b9d;
+    transform: translateY(-2px);
+}
+
+.login-button:active {
+    transform: translateY(0);
+}
+
+.signup-link {
+    margin-top: 25px;
+    font-size: 0.9em;
+    color: #777;
+}
+
+.signup-link a {
+    color: #1d3557;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.signup-link a:hover {
+    color: #457b9d;
+    text-decoration: underline;
+}
+
+/* Estilos para los mensajes de Django */
+.messages {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.messages li {
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: 500;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para mensajes de error */
+.messages .error {
+    background-color: #fce4e4;
+    color: #c0392b; 
+    border: 1px solid #f9caca;
+}
