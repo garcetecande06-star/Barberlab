@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #a8dadc 0%, #457b9d 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    color: #333;
+}
+
+.booking-container {
+    width: 100%;
+    max-width: 400px; /* Ancho similar al login/registro */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.booking-form {
+    background-color: #ffffff;
+    padding: 45px 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+h2 {
+    font-size: 2.2em;
+    margin-bottom: 30px;
+    color: #333;
+    font-weight: 700;
+}
+
+/* Estilos para los párrafos generados por form.as_p */
+.booking-form p {
+    margin-bottom: 20px; /* Espacio entre cada campo */
+    text-align: left; /* Alinea los labels a la izquierda */
+}
+
+.booking-form p label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 0.95em;
+}
+
+/* Estilos para los inputs y selects dentro de los párrafos */
+.booking-form p input[type="text"],
+.booking-form p input[type="number"], /* Si tienes campos numéricos, añádelos aquí */
+.booking-form p input[type="date"],
+.booking-form p input[type="time"],
+.booking-form p input[type="datetime-local"],
+.booking-form p select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 1em;
+    color: #333;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.booking-form p input[type="text"]:focus,
+.booking-form p input[type="number"]:focus,
+.booking-form p input[type="date"]:focus,
+.booking-form p input[type="time"]:focus,
+.booking-form p input[type="datetime-local"]:focus,
+.booking-form p select:focus {
+    border-color: #457b9d;
+    box-shadow: 0 0 0 3px rgba(69, 123, 157, 0.2);
+    outline: none;
+}
+
+.booking-button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background-color: #1d3557;
+    color: white;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 25px;
+}
+
+.booking-button:hover {
+    background-color: #457b9d;
+    transform: translateY(-2px);
+}
+
+.booking-button:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+    .booking-form {
+        padding: 30px 20px;
+        margin: 0 15px;
+    }
+    h2 {
+        font-size: 1.8em;
+    }
+    .booking-button {
+        font-size: 1em;
+    }
+}
