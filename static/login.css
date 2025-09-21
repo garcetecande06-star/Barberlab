@@ -1,76 +1,97 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+/* Paleta de colores más elegante y oscura */
+:root {
+    --bg-color: #0d1117; /* Negro muy oscuro para el fondo */
+    --card-bg: #161b22; /* Gris oscuro para las tarjetas y elementos */
+    --primary-color: #5865f2; /* Azul Discord para acentos */
+    --secondary-color: #9933ff; /* Violeta brillante para acentos secundarios */
+    --glow-color-1: #5865f2; /* Azul para efectos de brillo */
+    --glow-color-2: #9933ff; /* Violeta para efectos de brillo */
+    --glow-color-3: #22a7f0; /* Azul claro para el botón "Reservar" */
+    --text-color: #f0f4f7; /* Texto blanco grisáceo */
+    --light-text: #95a5a6; /* Texto secundario */
+    --danger-color: #ff5252; /* Rojo para el botón "Eliminar" */
+}
 
+/* Estilos de la página de Login */
 body {
-    font-family: 'Roboto', sans-serif;
-    background: linear-gradient(135deg, #a8dadc 0%, #457b9d 100%);
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    color: #333;
 }
 
 .login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 400px;
+    width: 90%;
+    max-width: 450px;
 }
 
 .login-form {
-    background-color: #ffffff;
+    background-color: var(--card-bg);
     padding: 45px 40px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     text-align: center;
-    box-sizing: border-box;
+    position: relative;
+}
+
+.login-form::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    border-radius: 20px;
+    background: linear-gradient(45deg, var(--glow-color-1), var(--glow-color-2), var(--glow-color-3));
+    background-size: 400% 400%;
+    animation: glowing-border 20s linear infinite;
+    opacity: 0.2;
+    transition: opacity 0.4s ease;
+    z-index: -1;
 }
 
 h2 {
     font-size: 2.2em;
-    margin-bottom: 30px;
-    color: #333;
     font-weight: 700;
-    letter-spacing: -0.5px;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    text-shadow: 0 0 5px var(--primary-color), 0 0 10px var(--primary-color);
 }
 
 .input-group {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     text-align: left;
 }
 
 label {
     display: block;
     font-weight: 500;
-    margin-bottom: 8px;
-    color: #555;
-    font-size: 0.95em;
-}
-
-label i {
-    margin-right: 8px;
-    color: #457b9d;
+    margin-bottom: 10px;
+    color: var(--text-color);
+    font-size: 1em;
 }
 
 input[type="text"],
 input[type="password"] {
     width: 100%;
     padding: 12px 15px;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
+    border: 1px solid var(--primary-color);
+    border-radius: 10px;
     box-sizing: border-box;
     font-size: 1em;
-    color: #333;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    color: var(--text-color);
+    background-color: transparent;
+    transition: all 0.3s ease;
 }
 
 input[type="text"]:focus,
 input[type="password"]:focus {
-    border-color: #457b9d;
-    box-shadow: 0 0 0 3px rgba(69, 123, 157, 0.2);
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(153, 51, 255, 0.3);
     outline: none;
 }
 
@@ -78,64 +99,70 @@ input[type="password"]:focus {
     width: 100%;
     padding: 14px;
     border: none;
-    border-radius: 8px;
-    background-color: #1d3557;
-    color: white;
+    border-radius: 50px;
+    cursor: pointer;
     font-size: 1.1em;
     font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    margin-top: 25px;
+    color: var(--text-color);
+    background: linear-gradient(45deg, var(--glow-color-1), var(--glow-color-2));
+    background-size: 200% auto;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(88, 101, 242, 0.4);
 }
 
 .login-button:hover {
-    background-color: #457b9d;
-    transform: translateY(-2px);
-}
-
-.login-button:active {
-    transform: translateY(0);
+    background-position: right center;
+    box-shadow: 0 0 20px rgba(88, 101, 242, 0.6);
 }
 
 .signup-link {
-    margin-top: 25px;
-    font-size: 0.9em;
-    color: #777;
+    margin-top: 30px;
+    font-size: 0.95em;
+    color: var(--light-text);
 }
 
 .signup-link a {
-    color: #1d3557;
+    color: var(--primary-color);
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s ease;
 }
 
 .signup-link a:hover {
-    color: #457b9d;
-    text-decoration: underline;
+    color: var(--secondary-color);
 }
 
-/* Estilos para los mensajes de Django */
-.messages {
-    list-style-type: none;
-    padding: 0;
+/* Animación de Borde y Resplandor */
+@keyframes glowing-border {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Estilo para el mensaje de error */
+.error-message {
+    background-color: #1a0808;
+    color: var(--danger-color);
+    border: 1px solid var(--danger-color);
+    border-radius: 10px;
+    padding: 15px 20px;
     margin-bottom: 25px;
     text-align: center;
-}
-
-.messages li {
-    padding: 12px 20px;
-    border-radius: 8px;
-    font-size: 0.9em;
+    font-size: 1em;
     font-weight: 500;
-    margin-bottom: 10px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    box-shadow: 0 0 10px rgba(255, 82, 82, 0.4);
+    animation: pulse-red 2s infinite;
 }
 
-/* Estilo para mensajes de error */
-.messages .error {
-    background-color: #fce4e4;
-    color: #c0392b; 
-    border: 1px solid #f9caca;
+.error-message ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+@keyframes pulse-red {
+    0% { box-shadow: 0 0 10px rgba(255, 82, 82, 0.4); }
+    50% { box-shadow: 0 0 20px rgba(255, 82, 82, 0.6); }
+    100% { box-shadow: 0 0 10px rgba(255, 82, 82, 0.4); }
 }

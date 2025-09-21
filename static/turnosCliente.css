@@ -1,0 +1,164 @@
+/* Paleta de colores más elegante y oscura */
+:root {
+    --bg-color: #0d1117; /* Negro muy oscuro para el fondo */
+    --card-bg: #161b22; /* Gris oscuro para las tarjetas y elementos */
+    --primary-color: #5865f2; /* Azul Discord para acentos */
+    --secondary-color: #9933ff; /* Violeta brillante para acentos secundarios */
+    --glow-color-1: #5865f2; /* Azul para efectos de brillo */
+    --glow-color-2: #9933ff; /* Violeta para efectos de brillo */
+    --glow-color-3: #22a7f0; /* Azul claro para el botón "Reservar" */
+    --text-color: #f0f4f7; /* Texto blanco grisáceo */
+    --light-text: #95a5a6; /* Texto secundario */
+    --danger-color: #ff5252; /* Rojo para el botón "Eliminar" */
+}
+
+/* Estilos globales */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilos de la barra de navegación */
+#navbar {
+    background-color: transparent;
+    padding: 10px 0;
+    margin-bottom: 30px;
+}
+
+#navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    padding: 0;
+    margin: 0;
+}
+
+#navbar li {
+    margin: 0 10px;
+}
+
+/* Botón de "Inicio" con estilo futurista */
+.btn-futurista {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--text-color);
+    background: linear-gradient(45deg, var(--glow-color-1), var(--glow-color-2));
+    background-size: 200% auto;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(88, 101, 242, 0.4);
+}
+
+.btn-futurista:hover {
+    background-position: right center;
+    box-shadow: 0 0 20px rgba(88, 101, 242, 0.6);
+    transform: translateY(-3px);
+}
+
+/* Título */
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px var(--primary-color);
+}
+
+/* Botón de "Reservar" */
+.reserve-link {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.reserve-link a {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--text-color);
+    background: linear-gradient(45deg, var(--glow-color-3), var(--primary-color));
+    background-size: 200% auto;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(34, 167, 240, 0.4);
+}
+
+.reserve-link a:hover {
+    background-position: right center;
+    box-shadow: 0 0 20px rgba(34, 167, 240, 0.6);
+    transform: translateY(-3px);
+}
+
+/* Estilos de la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: var(--card-bg);
+}
+
+thead th {
+    background-color: var(--card-bg);
+    color: var(--secondary-color);
+    font-weight: 600;
+    padding: 15px;
+    text-align: left;
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+tbody td {
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--light-text);
+}
+
+/* Estilo para las filas de la tabla */
+tbody tr {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    transform: scale(1.01);
+}
+
+/* Botón de "Eliminar" */
+.btn-danger {
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--text-color);
+    background-color: var(--danger-color);
+    box-shadow: 0 0 10px rgba(255, 82, 82, 0.4);
+    transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+    background-color: #d63031;
+    box-shadow: 0 0 15px rgba(255, 82, 82, 0.6);
+    transform: scale(1.05);
+}
+
+.no-data {
+    text-align: center;
+    font-style: italic;
+    color: var(--light-text);
+    padding: 30px;
+}

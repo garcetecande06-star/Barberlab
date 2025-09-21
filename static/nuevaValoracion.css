@@ -1,0 +1,141 @@
+/* Paleta de colores más elegante y oscura */
+:root {
+    --bg-color: #0d1117; /* Negro muy oscuro para el fondo */
+    --card-bg: #1a212c; /* Azul oscuro para las tarjetas y elementos */
+    --primary-color: #5865f2; /* Azul Discord para acentos */
+    --secondary-color: #9933ff; /* Violeta brillante para acentos secundarios */
+    --glow-color-1: #5865f2; /* Azul para efectos de brillo */
+    --glow-color-2: #9933ff; /* Violeta para efectos de brillo */
+    --glow-color-3: #22a7f0; /* Azul claro para el botón de "Enviar" */
+    --text-color: #f0f4f7; /* Texto blanco grisáceo */
+    --light-text: #95a5a6; /* Texto secundario */
+    --danger-color: #ff5252; /* Rojo para advertencias y el botón "Eliminar" */
+}
+
+/* 1. Estilos de la Página */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.login-container {
+    width: 90%;
+    max-width: 500px;
+}
+
+.login-form {
+    background-color: var(--card-bg);
+    padding: 45px 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5); /* Sombra profunda */
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Efecto de borde que brilla */
+.login-form::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    border-radius: 20px;
+    background: linear-gradient(45deg, var(--glow-color-1), var(--glow-color-2), var(--glow-color-3));
+    background-size: 400% 400%;
+    animation: glowing-border 20s linear infinite;
+    filter: blur(8px);
+    opacity: 0.5;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+}
+
+@keyframes glowing-border {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+h1 {
+    font-size: 2.2em;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px var(--primary-color);
+}
+
+.input-group {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: var(--text-color);
+    font-size: 1em;
+}
+
+/* Estilo para los campos de entrada, select y textarea */
+input, select, textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--primary-color);
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 1em;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(153, 51, 255, 0.3);
+    outline: none;
+}
+
+/* Estilo específico para el área de texto */
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Botón de envío */
+.btn-futurista {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--text-color);
+    background: linear-gradient(45deg, var(--glow-color-3), var(--primary-color));
+    background-size: 200% auto;
+    transition: all 0.3s ease;
+    margin-top: 25px;
+    box-shadow: 0 0 15px rgba(34, 167, 240, 0.4);
+}
+
+.btn-futurista:hover {
+    background-position: right center;
+    box-shadow: 0 0 20px rgba(34, 167, 240, 0.6);
+    transform: translateY(-3px);
+}
+
+/* Media Queries para dispositivos móviles */
+@media (max-width: 768px) {
+    .login-form {
+        padding: 30px 20px;
+    }
+}

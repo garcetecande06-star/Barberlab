@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Eliminar turno</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'eliminarTurno.css' %}">
 </head>
 <body>
-        <h2>¿Estás seguro de que quieres eliminar este turno?</h2>
+    <div class="container">
+        <h2 class="title">¿Estás seguro de que quieres eliminar este turno?</h2>
 
-        <form method="post">
+        <form method="post" class="confirm-buttons">
             {% csrf_token %}
-            <button type="submit" class="btn-danger">Sí, eliminar</button>
-            <a href="{% url 'turnosCliente' %}"class="btn-secondary">Cancelar</a>
+            <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+            <a href="{% url 'turnosCliente' %}" class="btn btn-secondary">Cancelar</a>
         </form>
-</body>
+    </div>
 </body>
 </html>

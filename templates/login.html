@@ -1,42 +1,44 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Iniciar Sesión</title>
-    {% load static %} 
-    <link rel="stylesheet" href="{% static 'login.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
-<body>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'login.css' %}" />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    </head>
+    <body>
     <div class="login-container">
-        <form method="post" class="login-form">
-            {% csrf_token %}
-            <h2>Iniciar Sesión</h2>
-            {% if messages %}
-                <ul class="messages">
-                    {% for message in messages %}
-                        <li class="{{ message.tags }}">{{ message }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-
-            <div class="input-group">
-                <label for="username"><i class="fas fa-user"></i> Usuario:</label>
-                <input type="text" id="username" name="username" required>
-            </div>
-            
-            <div class="input-group">
-                <label for="password"><i class="fas fa-lock"></i> Contraseña:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            
-            <button type="submit" class="login-button">Ingresar</button>
-            
-            <p class="signup-link">
-                ¿No tienes cuenta? <a href="http://127.0.0.1:8000/registro/">Crear cuenta</a>
-            </p>
-        </form>
+    <form method="post" class="login-form">
+        {% csrf_token %}
+        <h2>Iniciar Sesión</h2>
+        {% if messages %} 
+        <div class="error-message">
+        <ul>
+    {% for message in messages %} 
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        </div>
+        {% endif %}
+        <div class="input-group">
+        <label for="username"><i class="fas fa-user"></i> Usuario:</label>
+        <input type="text" id="username" name="username" required />
+        </div>
+        <div class="input-group">
+        <label for="password"><i class="fas fa-lock"></i> Contraseña:</label>
+        <input type="password" id="password" name="password" required />
+        </div>
+        <button type="submit" class="login-button">Ingresar</button>
+        <p class="signup-link">
+        ¿No tienes cuenta?
+        <a href="http://127.0.0.1:8000/registro/">Crear cuenta</a>
+        </p>
+    </form>
     </div>
-</body>
+    </body>
 </html>

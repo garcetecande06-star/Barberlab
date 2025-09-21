@@ -1,114 +1,156 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+/* Paleta de colores más elegante y oscura */
+:root {
+    --bg-color: #0d1117; /* Negro muy oscuro para el fondo */
+    --card-bg: #161b22; /* Gris oscuro para las tarjetas y elementos */
+    --primary-color: #5865f2; /* Azul Discord para acentos */
+    --secondary-color: #9933ff; /* Violeta brillante para acentos secundarios */
+    --glow-color-1: #5865f2; /* Azul para efectos de brillo */
+    --glow-color-2: #9933ff; /* Violeta para efectos de brillo */
+    --glow-color-3: #22a7f0; /* Azul claro para el botón "Reservar" */
+    --text-color: #f0f4f7; /* Texto blanco grisáceo */
+    --light-text: #95a5a6; /* Texto secundario */
+}
 
+/* Estilos de la página */
 body {
-    font-family: 'Roboto', sans-serif;
-    background: linear-gradient(135deg, #a8dadc 0%, #457b9d 100%);
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    color: #333;
 }
 
 .booking-container {
-    width: 100%;
-    max-width: 400px; /* Ancho similar al login/registro */
-    padding: 20px;
-    box-sizing: border-box;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
 }
 
 .booking-form {
-    background-color: #ffffff;
+    background-color: var(--card-bg);
     padding: 45px 40px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
     text-align: center;
-    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Efecto de borde que brilla */
+.booking-form::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    border-radius: 20px;
+    background: linear-gradient(45deg, var(--glow-color-1), var(--glow-color-2));
+    background-size: 400% 400%;
+    animation: glowing-border 20s linear infinite;
+    filter: blur(8px);
+    opacity: 0.5;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+}
+
+@keyframes glowing-border {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 h2 {
     font-size: 2.2em;
-    margin-bottom: 30px;
-    color: #333;
     font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px var(--primary-color);
 }
 
-/* Estilos para los párrafos generados por form.as_p */
+/* Estilo para los párrafos que contienen los campos del formulario */
 .booking-form p {
-    margin-bottom: 20px; /* Espacio entre cada campo */
-    text-align: left; /* Alinea los labels a la izquierda */
+    margin-bottom: 25px;
+    text-align: left;
 }
 
-.booking-form p label {
+/* Estilo para las etiquetas (labels) */
+.booking-form label {
     display: block;
     font-weight: 500;
-    margin-bottom: 8px;
-    color: #555;
-    font-size: 0.95em;
+    margin-bottom: 10px;
+    color: var(--text-color);
+    font-size: 1em;
 }
 
-/* Estilos para los inputs y selects dentro de los párrafos */
-.booking-form p input[type="text"],
-.booking-form p input[type="number"], /* Si tienes campos numéricos, añádelos aquí */
-.booking-form p input[type="date"],
-.booking-form p input[type="time"],
-.booking-form p input[type="datetime-local"],
-.booking-form p select {
+/* Estilo para los campos de entrada, select y textarea */
+.booking-form input,
+.booking-form select,
+.booking-form textarea {
     width: 100%;
     padding: 12px 15px;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
+    border: 1px solid var(--primary-color);
+    border-radius: 10px;
     box-sizing: border-box;
     font-size: 1em;
-    color: #333;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
 }
 
-.booking-form p input[type="text"]:focus,
-.booking-form p input[type="number"]:focus,
-.booking-form p input[type="date"]:focus,
-.booking-form p input[type="time"]:focus,
-.booking-form p input[type="datetime-local"]:focus,
-.booking-form p select:focus {
-    border-color: #457b9d;
-    box-shadow: 0 0 0 3px rgba(69, 123, 157, 0.2);
+.booking-form input:focus,
+.booking-form select:focus,
+.booking-form textarea:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(153, 51, 255, 0.3);
     outline: none;
 }
 
+/* Botón de "Reservar" */
 .booking-button {
     width: 100%;
     padding: 14px;
     border: none;
-    border-radius: 8px;
-    background-color: #1d3557;
-    color: white;
+    border-radius: 50px;
+    cursor: pointer;
     font-size: 1.1em;
     font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    color: var(--text-color);
+    background: linear-gradient(45deg, var(--glow-color-3), var(--primary-color));
+    background-size: 200% auto;
+    transition: all 0.3s ease;
     margin-top: 25px;
+    box-shadow: 0 0 15px rgba(34, 167, 240, 0.4);
 }
 
 .booking-button:hover {
-    background-color: #457b9d;
-    transform: translateY(-2px);
+    background-position: right center;
+    box-shadow: 0 0 20px rgba(34, 167, 240, 0.6);
+    transform: translateY(-3px);
 }
 
-.booking-button:active {
-    transform: translateY(0);
+/* Estilos para los mensajes de error del formulario */
+.errorlist {
+    color: #ff5252;
+    list-style-type: none;
+    padding: 0;
+    margin-top: -15px;
+    margin-bottom: 10px;
+    text-align: left;
+    font-size: 0.9em;
 }
 
-@media (max-width: 600px) {
+.errorlist li {
+    margin-top: 5px;
+}
+
+/* Media Queries para dispositivos móviles */
+@media (max-width: 768px) {
     .booking-form {
         padding: 30px 20px;
-        margin: 0 15px;
-    }
-    h2 {
-        font-size: 1.8em;
-    }
-    .booking-button {
-        font-size: 1em;
     }
 }

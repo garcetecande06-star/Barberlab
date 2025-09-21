@@ -1,25 +1,24 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reservar Turno</title> {# Mejor poner un título descriptivo aquí #}
+    <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reservar Turno</title>
     {% load static %}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> {# Añadido para iconos #}
-    <link rel="stylesheet" href="{% static 'reservarTurno.css' %}">
-</head>
-<body>
-
-<div class="booking-container">
-    <form method="post" class="booking-form">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'reservarTurno.css' %}" />
+    </head>
+    <body>
+    <div class="booking-container">
+        <form method="post" class="booking-form">
         {% csrf_token %}
-        <h2>Reservar Turno</h2> {# ¡Aquí está el h2, dentro del formulario! #}
-        
-        {{ form.as_p }} {# Mantenemos esta línea #}
-        
+        <h2>Reservar Turno</h2>
+        {{ form.as_p }}
         <button type="submit" class="booking-button">Reservar</button>
-    </form>
-</div>
-
-</body>
+        </form>
+    </div>
+    </body>
 </html>
