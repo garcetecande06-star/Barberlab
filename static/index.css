@@ -1,29 +1,10 @@
-
-:root {
-    --bg-color: #0d1117; /* Fondo oscuro y profesional */
-    --card-bg: #161b22; /* Fondo de las tarjetas */
-    --primary-color: #3498db; /* Azul eléctrico */
-    --secondary-color: #e67e22; /* Naranja neón */
-    --glow-color-1: #3498db;
-    --glow-color-2: #e74c3c;
-    --glow-color-3: #2ecc71;
-    --text-color: #f0f4f7;
-    --light-text: #95a5a6;
-    --whatsapp-color: #25D366;
-    --instagram-color: #C13584;
-}
-
-/* 1. Estilos Globales y de la Página */
 body {
     font-family: 'Poppins', sans-serif;
-    margin: 0;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    line-height: 1.6;
+    background-color: #0d1117;
+    color: #f0f4f7;
 }
 
 .main-content-wrapper {
-    max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
@@ -31,26 +12,22 @@ body {
 .section-title {
     text-align: center;
     font-size: 2.2rem;
-    font-weight: 700;
-    color: var(--text-color);
+    color: #f0f4f7;
     margin-bottom: 40px;
-    text-shadow: 0 0 5px var(--primary-color), 0 0 10px var(--primary-color);
+    text-shadow: 0 0 10px #3498db;
 }
 
 .section-text {
     text-align: center;
     max-width: 800px;
     margin: 0 auto;
-    line-height: 1.8;
-    color: var(--light-text);
+    color: #95a5a6;
 }
 
-/* 2. Barra de Navegación Plegable (Futurista) */
+/* Navbar */
 .navbar-container {
-    background-color: var(--card-bg);
-    color: var(--text-color);
+    color: #f0f4f7;
     padding: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -61,15 +38,15 @@ body {
 .brand-logo {
     font-weight: 700;
     font-size: 1.5rem;
-    color: var(--primary-color);
+    color: #3498db;
     text-decoration: none;
-    text-shadow: 0 0 5px var(--primary-color);
+    text-shadow: 0 0 5px #3498db;
 }
 
 .menu-toggle {
     background: none;
     border: none;
-    color: var(--text-color);
+    color: #f0f4f7;
     font-size: 1.5rem;
     cursor: pointer;
     display: none;
@@ -84,7 +61,7 @@ body {
 }
 
 .main-nav a {
-    color: var(--text-color);
+    color: #f0f4f7;
     text-decoration: none;
     font-weight: 500;
     position: relative;
@@ -92,18 +69,18 @@ body {
 }
 
 .main-nav a:hover {
-    color: var(--primary-color);
-    text-shadow: 0 0 5px var(--primary-color), 0 0 10px var(--primary-color);
+    color: #3498db;
+    text-shadow: 0 0 5px #3498db, 0 0 10px #3498db;
 }
 
-/* 3. Estilos de las Tarjetas (futurista) */
+/* Tarjetas */
 .content-section {
     padding: 60px 0;
     margin-top: 40px;
 }
 
 .card-futurista {
-    background-color: var(--card-bg);
+    background-color: #161b22;
     border-radius: 20px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     padding: 40px;
@@ -113,7 +90,6 @@ body {
     overflow: hidden;
 }
 
-/* Efecto de borde RGB */
 .card-futurista::before {
     content: '';
     position: absolute;
@@ -122,7 +98,7 @@ body {
     width: 100%;
     height: 100%;
     border-radius: 20px;
-    background: linear-gradient(45deg, var(--glow-color-1), var(--glow-color-2), var(--glow-color-3));
+    background: linear-gradient(45deg, #3498db, #e74c3c, #2ecc71);
     background-size: 400% 400%;
     animation: glowing-border 20s linear infinite;
     opacity: 0;
@@ -140,7 +116,7 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-/* 4. Estilos de la Sección de Servicios */
+/* Servicios */
 .cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -148,11 +124,11 @@ body {
 }
 
 .service-card {
-    background-color: var(--bg-color);
+    background-color: #0d1117;
     padding: 25px;
     border-radius: 15px;
     text-align: center;
-    border: 1px solid var(--primary-color);
+    border: 1px solid #3498db;
     box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -163,12 +139,12 @@ body {
 }
 
 .service-title {
-    color: var(--primary-color);
+    color: #3498db;
     font-weight: 600;
     margin-bottom: 10px;
 }
 
-/* 5. Estilos de la Galería */
+/* Galería */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -179,14 +155,14 @@ body {
     position: relative;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 0 10px rgba(46, 204, 113, 0.4);
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid var(--glow-color-3);
+    border: 1px solid #3498db;
 }
 
 .gallery-item-futurista:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(46, 204, 113, 0.6);
+    box-shadow: 0 0 20px rgba(52, 152, 219, 0.3);
 }
 
 .gallery-item-futurista img {
@@ -195,7 +171,7 @@ body {
     object-fit: cover;
 }
 
-/* 6. Estilos de la Sección de Valoraciones */
+/* Valoraciones */
 .reviews-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -203,11 +179,11 @@ body {
 }
 
 .review-card {
-    background-color: var(--bg-color);
+    background-color: #0d1117;
     padding: 20px;
     border-radius: 15px;
     text-align: center;
-    border: 1px solid var(--secondary-color);
+    border: 1px solid #e67e22;
     box-shadow: 0 0 10px rgba(230, 126, 34, 0.4);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -218,7 +194,7 @@ body {
 }
 
 .rating-stars {
-    color: var(--secondary-color);
+    color: #e67e22;
     font-size: 1.2rem;
     margin-bottom: 10px;
 }
@@ -230,10 +206,10 @@ body {
 
 .review-comment {
     font-style: italic;
-    color: var(--light-text);
+    color: #95a5a6;
 }
 
-/* 7. Botones */
+/* Botones */
 .button-container {
     text-align: center;
     margin-bottom: 30px;
@@ -248,10 +224,10 @@ body {
     transition: all 0.3s ease;
     border: none;
     cursor: pointer;
-    background: linear-gradient(45deg, var(--glow-color-1), var(--glow-color-2));
+    background: linear-gradient(45deg, #3498db, #e74c3c);
     background-size: 200% auto;
-    color: var(--text-color);
-    text-shadow: 0 0 5px var(--text-color);
+    color: #f0f4f7;
+    text-shadow: 0 0 5px #f0f4f7;
     box-shadow: 0 0 15px rgba(52, 152, 219, 0.4);
 }
 
@@ -260,7 +236,7 @@ body {
     box-shadow: 0 0 20px rgba(52, 152, 219, 0.6);
 }
 
-/* 8. Sección de Contacto */
+/* Contacto */
 .contact-links {
     display: flex;
     justify-content: center;
@@ -276,7 +252,7 @@ body {
     font-size: 1.2rem;
     font-weight: 500;
     text-decoration: none;
-    color: var(--text-color);
+    color: #f0f4f7;
     padding: 10px 20px;
     border-radius: 50px;
     transition: all 0.3s ease;
@@ -288,33 +264,33 @@ body {
 
 .contact-link:hover {
     transform: translateY(-5px);
-    text-shadow: 0 0 5px var(--text-color);
+    text-shadow: 0 0 5px #f0f4f7;
 }
 
 .contact-link .fa-whatsapp {
-    color: var(--whatsapp-color);
+    color: #25D366;
 }
 
 .contact-link .fa-instagram {
-    color: var(--instagram-color);
+    color: #C13584;
 }
 
-/* 9. Pie de Página (Futurista) */
+/* Footer */
 .footer-container {
-    background-color: var(--card-bg);
-    color: var(--light-text);
+    background-color: #161b22;
+    color: #95a5a6;
     text-align: center;
     padding: 25px;
     margin-top: 40px;
-    border-top: 1px solid var(--light-text);
+    border-top: 1px solid #95a5a6;
 }
 
-/* Responsive Design para dispositivos móviles */
+/* Responsive */
 @media (max-width: 768px) {
     .menu-toggle {
-        display: block; /* Muestra el ícono de hamburguesa en móviles */
+        display: block;
     }
-    
+
     .main-nav {
         display: none;
         width: 100%;
@@ -322,10 +298,10 @@ body {
         position: absolute;
         top: 100%;
         left: 0;
-        background-color: var(--card-bg);
-        border-top: 1px solid var(--primary-color);
+        background-color: #161b22;
+        border-top: 1px solid #3498db;
     }
-    
+
     .main-nav.active {
         display: block;
     }
@@ -341,9 +317,9 @@ body {
     .card-futurista {
         padding: 20px;
     }
-    
+
     .contact-links {
         flex-direction: column;
         gap: 15px;
     }
-}/* Verificacion */
+}

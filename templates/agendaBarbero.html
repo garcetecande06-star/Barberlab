@@ -1,24 +1,18 @@
-<!-- templates/turnos/agenda.html -->
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Agenda de Turnos</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        table { width: 100%; border-collapse: collapse; }
-        th, td { padding: 10px; border: 1px solid #ccc; text-align: left; }
-        .pendiente { background-color: #f0f0f0; }
-        .confirmado { background-color: #add8e6; }
-        .realizado { background-color: #90ee90; }
-        .cancelado { background-color: #f08080; }
-    </style>
+    <link rel="stylesheet" href="{% static 'agendaBarbero.css' %}">
 </head>
 <body>
-        <!-- NAVBAR -->
+    <!-- NAVBAR -->
     <nav id="navbar">
         <ul>
             <li><a href="http://127.0.0.1:8000">Inicio</a></li>
         </ul>
+    </nav>
+
     <h1>Agenda de Turnos</h1>
     <table>
         <thead>
@@ -48,4 +42,3 @@
     </table>
 </body>
 </html>
-/* Verificacion */
