@@ -1,15 +1,21 @@
 from django.shortcuts import render, redirect
 from django.views import View
-from django.views.generic import TemplateView, CreateView, DeleteView
+from django.views.generic import TemplateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django import forms
+from datetime import datetime, date
+from django.utils import timezone
 from .models import Cliente
 from apps.servicio.models import Servicio
+from apps.barbero.models import Barbero
 from apps.valoracion.models import Valoracion
 from apps.turno.models import Turno
+from django import forms
+
 
 # ------------------ Index ------------------
 class IndexView(TemplateView):
@@ -20,6 +26,7 @@ class IndexView(TemplateView):
         context['servicios'] = Servicio.objects.all()
         context['valoraciones'] = Valoracion.objects.select_related('barbero', 'servicio').all()
         return context
+
 
 # ------------------ Registro ------------------
 class RegistroClienteView(View):
@@ -43,16 +50,12 @@ class RegistroClienteView(View):
             messages.error(request, "El email ya está registrado")
             return render(request, self.template_name)
 
-        # Crear User con contraseña encriptada
         user = User.objects.create_user(username=username, password=password, email=email)
-        # Crear Cliente vinculado
         Cliente.objects.create(user=user, nombre=nombre, email=email, telefono=telefono)
 
-        # Loguear automáticamente
         login(request, user)
-        # Se elimina el mensaje de éxito aquí para que no se muestre en el login
-        # messages.success(request, "Registro exitoso")
         return redirect('turnosCliente')
+
 
 # ------------------ Login ------------------
 class LoginClienteView(View):
@@ -68,19 +71,16 @@ class LoginClienteView(View):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             try:
-                # Si la autenticación es exitosa, intenta acceder al perfil de cliente.
                 nombre_cliente = user.cliente.nombre
                 login(request, user)
-                # No se agrega un mensaje de bienvenida
                 return redirect('turnosCliente')
             except Cliente.DoesNotExist:
-                # Se muestra el mismo mensaje de error genérico para ambos casos de fallo de login.
                 messages.error(request, "Usuario o contraseña incorrectos")
                 return render(request, self.template_name)
         else:
-            # Esto se ejecuta si `authenticate` devuelve None (usuario o contraseña incorrectos).
             messages.error(request, "Usuario o contraseña incorrectos")
             return render(request, self.template_name)
+
 
 # ------------------ TurnosCliente ------------------
 class TurnosClienteView(LoginRequiredMixin, TemplateView):
@@ -97,22 +97,85 @@ class TurnosClienteView(LoginRequiredMixin, TemplateView):
             context['turnos'] = Turno.objects.none()
         return context
 
-# ------------------ ReservarTurno ------------------
-class reservarTurnoView(LoginRequiredMixin, CreateView):
-    model = Turno
-    fields = ['barbero', 'servicio', 'fechaHora']  # Cliente se asigna automáticamente
+
+# ------------------ Formulario ReservarTurno ------------------
+
+HORARIOS_FIJOS = [
+    ('09:00', '09:00 AM'),
+    ('10:00', '10:00 AM'),
+    ('11:00', '11:00 AM'),
+    ('12:00', '12:00 PM'),
+    ('13:00', '01:00 PM'),
+    ('14:00', '02:00 PM'),
+]
+
+class TurnoForm(forms.Form):
+    barbero = forms.ModelChoiceField(queryset=Barbero.objects.all())
+    servicio = forms.ModelChoiceField(queryset=Servicio.objects.all())
+    fecha = forms.DateField(
+        label='Fecha',
+        widget=forms.DateInput(attrs={
+            'type': 'date',
+            'min': date.today().strftime('%Y-%m-%d')  # no permitir fechas pasadas
+        }),
+    )
+    hora = forms.ChoiceField(choices=HORARIOS_FIJOS, label="Hora")
+
+    def clean(self):
+        cleaned_data = super().clean()
+        fecha = cleaned_data.get('fecha')
+        hora_str = cleaned_data.get('hora')
+
+        if fecha and hora_str:
+            hora = datetime.strptime(hora_str, '%H:%M').time()
+            fecha_hora = datetime.combine(fecha, hora)
+
+            if fecha_hora < timezone.now():
+                raise forms.ValidationError("No podés reservar turnos en el pasado.")
+
+            cleaned_data['fechaHora'] = fecha_hora
+        return cleaned_data
+
+# ------------------ ReservarTurnoView ------------------
+class reservarTurnoView(LoginRequiredMixin, View):
     template_name = 'reservarTurno.html'
     success_url = reverse_lazy('turnosCliente')
 
-    def form_valid(self, form):
-        try:
-            form.instance.cliente = Cliente.objects.get(user=self.request.user)
-        except Cliente.DoesNotExist:
-            form.add_error(None, "La contraseña o usuario son incorrectas.")
-            return self.form_invalid(form)
-        return super().form_valid(form)
+    def get(self, request):
+        form = TurnoForm()
+        return render(request, self.template_name, {'form': form})
 
-# ------------------ Cancelar/Eliminar Turno ------------------
+    def post(self, request):
+        form = TurnoForm(request.POST)
+        if form.is_valid():
+            cliente = Cliente.objects.get(user=request.user)
+            fechaHora = form.cleaned_data['fechaHora']
+            barbero = form.cleaned_data['barbero']
+
+            # Validar turno del cliente
+            if Turno.objects.filter(cliente=cliente, fechaHora=fechaHora).exists():
+                form.add_error(None, "Ya tenés un turno reservado para ese horario.")
+                return render(request, self.template_name, {'form': form})
+
+            # Validar turno del barbero
+            if Turno.objects.filter(barbero=barbero, fechaHora=fechaHora).exists():
+                form.add_error(None, "El barbero ya tiene un turno reservado en ese horario.")
+                return render(request, self.template_name, {'form': form})
+
+            turno = Turno(
+                cliente=cliente,
+                barbero=barbero,
+                servicio=form.cleaned_data['servicio'],
+                fechaHora=fechaHora,
+                estado='pendiente'
+            )
+            turno.save()
+            return redirect(self.success_url)
+
+        return render(request, self.template_name, {'form': form})
+
+
+# ------------------ EliminarTurno ------------------
 class eliminarTurnoView(LoginRequiredMixin, DeleteView):
     model = Turno
     template_name = "eliminarTurno.html"
