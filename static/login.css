@@ -101,6 +101,10 @@ input[type="password"]:focus {
     color: #9933ff;
 }
 
+#enlace-inicio{
+    color: blue;
+}
+
 @keyframes glowing-border {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }

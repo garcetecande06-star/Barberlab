@@ -1,17 +1,72 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
+    font-family: 'Poppins', sans-serif;
+    background-color: #0d1117;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.brand-logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #3498db;
+    text-decoration: none;
+    text-shadow: 0 0 5px #3498db;
+}
+
+main{
+    flex: 1;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.navbar-menu li{
+    list-style: none;
+}
+
+.navbar-menu a {
+  color: #f0f0f0;
+  text-decoration: none;
+  font-weight: 500;
+  padding-right: 20px;
+}
+
+.navbar-menu a:hover{
+    color: #3498db;
+    text-shadow: 0 0 5px #3498db, 0 0 10px #3498db;
+}
+
+h1{
+    color: #3498db;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+label{
+    color: #f0f0f0;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
+    background-color: #3498db;
+
 }
 
 th, td {
     padding: 10px;
-    border: 1px solid #ccc;
-    text-align: left;
+    border: 1px solid #000000;
+    text-align: cen;
 }
 
 .pendiente {

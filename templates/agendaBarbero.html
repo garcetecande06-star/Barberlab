@@ -6,39 +6,53 @@
     <link rel="stylesheet" href="{% static 'agendaBarbero.css' %}">
 </head>
 <body>
-    <!-- NAVBAR -->
-    <nav id="navbar">
-        <ul>
+    <header class="navbar-container">
+        <a href="#" class="brand-logo">BARBERLY</a>
+        <ul class="navbar-menu">
             <li><a href="http://127.0.0.1:8000">Inicio</a></li>
         </ul>
-    </nav>
+    </header>
 
-    <h1>Agenda de Turnos</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Fecha y Hora</th>
-                <th>Cliente</th>
-                <th>Barbero</th>
-                <th>Servicio</th>
-                <th>Estado</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for turno in turnos %}
-            <tr class="{{ turno.estado }}">
-                <td>{{ turno.fechaHora|date:"d/m/Y H:i" }}</td>
-                <td>{{ turno.cliente }}</td>
-                <td>{{ turno.barbero }}</td>
-                <td>{{ turno.servicio }}</td>
-                <td>{{ turno.get_estado_display }}</td>
-            </tr>
-            {% empty %}
-            <tr>
-                <td colspan="5">No hay turnos disponibles.</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <main>
+        <h1>Agenda de Turnos</h1>
+
+        <form method="get" action="" style="margin-bottom: 20px;">
+            <label for="barbero">Filtrar por Barbero:</label>
+            <select name="barbero" id="barbero" onchange="this.form.submit()">
+                <option value="">Todos</option>
+                {% for barbero in barberos %}
+                    <option value="{{ barbero.id }}" {% if barbero.id == barbero_seleccionado %}selected{% endif %}>
+                        {{ barbero.nombre }}
+                    </option>
+                {% endfor %}
+            </select>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Fecha y Hora</th>
+                    <th>Cliente</th>
+                    <th>Barbero</th>
+                    <th>Servicio</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for turno in turnos %}
+                    <tr class="{{ turno.estado }}">
+                        <td>{{ turno.fechaHora|date:"d/m/Y H:i" }}</td>
+                        <td>{{ turno.cliente }}</td>
+                        <td>{{ turno.barbero }}</td>
+                        <td>{{ turno.servicio }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="4">No hay turnos disponibles.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
 </body>
 </html>
+
