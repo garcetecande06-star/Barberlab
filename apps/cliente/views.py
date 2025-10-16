@@ -8,7 +8,7 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django import forms
 from datetime import datetime, date
-from django.utils import timezone
+from django.utils import timezone  # Importación clave
 from .models import Cliente
 from apps.servicio.models import Servicio
 from apps.barbero.models import Barbero
@@ -75,6 +75,7 @@ class LoginClienteView(View):
                 login(request, user)
                 return redirect('turnosCliente')
             except Cliente.DoesNotExist:
+                # Esto manejaría el caso donde el User existe, pero no el Cliente asociado
                 messages.error(request, "Usuario o contraseña incorrectos")
                 return render(request, self.template_name)
         else:
@@ -116,7 +117,7 @@ class TurnoForm(forms.Form):
         label='Fecha',
         widget=forms.DateInput(attrs={
             'type': 'date',
-            'min': date.today().strftime('%Y-%m-%d')  # no permitir fechas pasadas
+            'min': date.today().strftime('%Y-%m-%d')  
         }),
     )
     hora = forms.ChoiceField(choices=HORARIOS_FIJOS, label="Hora")
@@ -128,7 +129,10 @@ class TurnoForm(forms.Form):
 
         if fecha and hora_str:
             hora = datetime.strptime(hora_str, '%H:%M').time()
-            fecha_hora = datetime.combine(fecha, hora)
+            
+            naive_fecha_hora = datetime.combine(fecha, hora)
+            
+            fecha_hora = timezone.make_aware(naive_fecha_hora)
 
             if fecha_hora < timezone.now():
                 raise forms.ValidationError("No podés reservar turnos en el pasado.")

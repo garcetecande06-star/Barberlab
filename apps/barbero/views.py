@@ -1,4 +1,5 @@
 from django.views.generic import TemplateView
+from django.shortcuts import render 
 from apps.turno.models import Turno
 from apps.barbero.models import Barbero
 
@@ -19,5 +20,5 @@ class AgendaTurnosView(TemplateView):
         context['barberos'] = Barbero.objects.all()
         return context
 
-
-
+def acceso_generico_view(request):
+    return render(request, 'Inicio_De_Secion_Barberos.html')

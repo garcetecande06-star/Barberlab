@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso Barbero</title>
+    <link rel="stylesheet" href="{% static 'iniciodesecion.css' %}">
+</head>
+<body>
+    
+    <div class="login-container">
+        <div class="login-form">
+            <h2>Acceso a la Agenda</h2>
+            
+            <form id="accesoForm" onsubmit="event.preventDefault(); verificarAcceso();">
+                {% csrf_token %} 
+                
+                <div class="input-group">
+                    <label for="userInput">Usuario:</label>
+                    <input type="text" id="userInput" placeholder="Nombre de usuario" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="passInput">Contraseña:</label>
+                    <input type="password" id="passInput" placeholder="Contraseña" required>
+                </div>
+                
+                <button type="submit" class="login-button">Acceder</button>
+            </form>
+            
+            <p id="errorMsg"></p>
+        </div>
+    </div>
+
+    <script> 
+        const CONTRASENA = "2025"; 
+        const URL_AGENDA = "/agenda/"; 
+        
+        function verificarAcceso() {
+            const inputContrasena = document.getElementById("passInput").value;
+            const inputUsuario = document.getElementById("userInput").value;
+            const errorMsg = document.getElementById("errorMsg");
+            
+            errorMsg.textContent = "";
+            errorMsg.classList.remove('error-message');
+
+            if (inputUsuario && inputContrasena === CONTRASENA) {
+
+                window.location.href = URL_AGENDA;
+            } else {
+
+                errorMsg.textContent = "Usuario o Contraseña incorrectos.";
+                errorMsg.classList.add('error-message'); 
+                document.getElementById("passInput").value = ""; 
+            }
+        }
+    </script>
+</body>
+</html>
