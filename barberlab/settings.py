@@ -61,7 +61,7 @@ DATABASES = {
         'NAME': 'Barberlab',
         'USER': '',
         'PASSWORD': '',
-        'HOST': r'EQUIPO\SQLEXPRESS',
+        'HOST': r'CANDE\SQLEXPRESS',
         'PORT': '',
         'OPTIONS': {
             'driver': 'ODBC Driver 17 for SQL Server',
