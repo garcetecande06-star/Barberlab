@@ -4,25 +4,45 @@
 <head>
     <title>Login Staff</title>
     <link rel="stylesheet" href="{% static 'iniciodesesion.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h2>Iniciar sesión</h2>
+    <div class="login-container">
+    <div class="login-form">
+        
+        <h2>Iniciar sesión</h2>
 
-    {% if messages %}
-        {% for message in messages %}
-            <p style="color:red;">{{ message }}</p>
-        {% endfor %}
-    {% endif %}
+        {% if messages %}
+            <div class="error-message">
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
 
-    <form method="post">
-        {% csrf_token %}
-        <label for="username">Usuario:</label>
-        <input type="text" name="username" required><br>
-
-        <label for="password">Contraseña:</label>
-        <input type="password" name="password" required><br>
-
-        <button type="submit">Entrar</button>
-    </form>
+        <form method="post">
+            {% csrf_token %}
+            
+            <div class="input-group">
+                <label for="id_username">Usuario:</label>
+                <input type="text" id="id_username" name="username" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="id_password">Contraseña:</label>
+                <input type="password" id="id_password" name="password" required>
+            </div>
+            
+            <button type="submit" class="login-button">Entrar</button>
+        </form>
+        
+        <div class="home-link">
+            <a href="http://127.0.0.1:8000" id="enlace-inicio">Inicio</a>
+        </div>
+        
+    </div>
+    </div> 
 </body>
 </html>
