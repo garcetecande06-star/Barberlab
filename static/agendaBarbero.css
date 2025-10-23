@@ -59,28 +59,21 @@ label{
 table {
     width: 100%;
     border-collapse: collapse;
-    background-color: #3498db;
 
 }
 
-th, td {
+th{
+    background-color: #3498db;
+    color: #fff;
+}
+
+td {
+    background-color: white;
+    color: black;
+}
+
+th, td{
     padding: 10px;
     border: 1px solid #000000;
-    text-align: cen;
-}
-
-.pendiente {
-    background-color: #f0f0f0;
-}
-
-.confirmado {
-    background-color: #add8e6;
-}
-
-.realizado {
-    background-color: #90ee90;
-}
-
-.cancelado {
-    background-color: #f08080;
+    text-align: center;
 }
