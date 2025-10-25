@@ -9,11 +9,6 @@ body {
     margin: 0;
 }
 
-.home-link {
-    margin-top: 25px; 
-    text-align: center;
-}
-
 .login-container {
     width: 90%;
     max-width: 450px;
@@ -89,33 +84,11 @@ input[type="password"]:focus {
     box-shadow: 0 0 20px rgba(88, 101, 242, 0.6);
 }
 
-.signup-link {
-    margin-top: 30px;
-    font-size: 0.95em;
-    color: #95a5a6;
-}
-
-.signup-link a {
-    color: #5865f2;
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s ease;
-}
-
-.signup-link a:hover {
-    color: #9933ff;
-}
-
-#enlace-inicio {
-    color: blue;
-}
-
 @keyframes glowing-border {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
-
 
 .error-message {
     background-color: #1a0808;
@@ -143,3 +116,37 @@ input[type="password"]:focus {
     50% { box-shadow: 0 0 20px rgba(255, 82, 82, 0.6); }
     100% { box-shadow: 0 0 10px rgba(255, 82, 82, 0.4); }
 }
+
+.links-container {
+    margin-top: 30px;
+    font-size: 0.95em;
+}
+
+
+.signup-link,
+.home-link {
+    color: #95a5a6; 
+    margin: 0;
+    text-align: center;
+}
+
+
+.signup-link {
+    margin-bottom: 10px; 
+}
+
+.signup-link a,
+.home-link a {
+    color: #5865f2; 
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+
+.signup-link a:hover,
+.home-link a:hover {
+    color: #9933ff;
+    text-shadow: 0 0 10px #9933ff; 
+}
+
