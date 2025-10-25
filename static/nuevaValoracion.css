@@ -24,17 +24,25 @@ body {
 }
 
 @keyframes glowing-border {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 h1 {
     font-size: 2.2em;
     font-weight: 700;
-    color: #5865f2;
+    color: #9933ff;
     margin-bottom: 30px;
-    text-shadow: 0 0 5px #5865f2, 0 0 10px #5865f2;
+    text-shadow: 0 0 5px #9933ff, 0 0 10px #9933ff;
 }
 
 .input-group {
@@ -50,19 +58,23 @@ label {
     font-size: 1em;
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
     width: 100%;
     padding: 12px 15px;
-    border: 1px solid #5865f2;
+    border: 1px solid #9933ff;
     border-radius: 10px;
     box-sizing: border-box;
     font-size: 1em;
     color: #f0f4f7;
-    background-color: #0d1117;
+    background-color: transparent;
     transition: all 0.3s ease;
 }
 
-input:focus, select:focus, textarea:focus {
+input:focus,
+select:focus,
+textarea:focus {
     border-color: #9933ff;
     box-shadow: 0 0 0 3px rgba(153, 51, 255, 0.3);
     outline: none;
@@ -82,16 +94,15 @@ textarea {
     font-size: 1.1em;
     font-weight: 600;
     color: #f0f4f7;
-    background: linear-gradient(45deg, #5865f2, #9933ff);
-    background-size: 200% auto;
+    background-color: #9933ff;
     transition: all 0.3s ease;
     margin-top: 25px;
-    box-shadow: 0 0 15px;
+    box-shadow: 0 0 15px rgba(153, 51, 255, 0.4);
 }
 
 .btn-futurista:hover {
-    background-position: right center;
-    box-shadow: 0 0 20px rgba(88, 101, 242, 0.6);
+    box-shadow: 0 0 20px rgba(153, 51, 255, 0.6);
+    transform: translateY(-3px);
 }
 
 @media (max-width: 768px) {
@@ -99,4 +110,3 @@ textarea {
         padding: 30px 20px;
     }
 }
-

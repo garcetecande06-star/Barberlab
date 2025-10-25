@@ -18,7 +18,7 @@ body {
     background-color: #161b22;
     padding: 45px 40px;
     border-radius: 20px;
-    box-shadow: 0 0 20px #0000004D; /* rgba(0, 0, 0, 0.3) */
+    box-shadow: 0 0 20px #0000004D;
     text-align: center;
     position: relative;
 }
@@ -31,7 +31,7 @@ body {
     width: 100%;
     height: 100%;
     border-radius: 20px;
-    background: linear-gradient(45deg, #5865f2, #9933ff, #22a7f0);
+    background: linear-gradient(45deg, #9933ff, #c084fc, #9933ff);
     background-size: 400% 400%;
     animation: glowing-border 20s linear infinite;
     opacity: 0.2;
@@ -42,9 +42,9 @@ body {
 h2 {
     font-size: 2.2em;
     font-weight: 700;
-    color: #f0f4f7;
+    color: #9933ff;
     margin-bottom: 30px;
-    text-shadow: 0 0 5px #5865f2, 0 0 10px #5865f2;
+    text-shadow: 0 0 5px #9933ff, 0 0 10px #9933ff;
 }
 
 .input-group {
@@ -62,10 +62,11 @@ label {
 
 input[type="text"],
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+input[type="tel"] {
     width: 100%;
     padding: 12px 15px;
-    border: 1px solid #5865f2;
+    border: 1px solid #9933ff;
     border-radius: 10px;
     box-sizing: border-box;
     font-size: 1em;
@@ -76,9 +77,10 @@ input[type="password"] {
 
 input[type="text"]:focus,
 input[type="email"]:focus,
-input[type="password"]:focus {
+input[type="password"]:focus,
+input[type="tel"]:focus {
     border-color: #9933ff;
-    box-shadow: 0 0 0 3px #9933FF4D; 
+    box-shadow: 0 0 0 3px #9933FF4D;
     outline: none;
 }
 
@@ -91,16 +93,15 @@ input[type="password"]:focus {
     font-size: 1.1em;
     font-weight: 600;
     color: #f0f4f7;
-    background: linear-gradient(45deg, #5865f2, #9933ff);
-    background-size: 200% auto;
+    background-color: #9933ff;
     transition: all 0.3s ease;
     margin-top: 25px;
-    box-shadow: 0 0 15px #5865F299; 
+    box-shadow: 0 0 15px rgba(153, 51, 255, 0.4);
 }
 
 .register-button:hover {
-    background-position: right center;
-    box-shadow: 0 0 20px #5865F299; 
+    box-shadow: 0 0 20px rgba(153, 51, 255, 0.6);
+    transform: translateY(-3px);
 }
 
 .login-link {
@@ -110,19 +111,27 @@ input[type="password"]:focus {
 }
 
 .login-link a {
-    color: #5865f2;
+    color: #9933ff;
     text-decoration: none;
     font-weight: 600;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .login-link a:hover {
     color: #9933ff;
+    text-shadow: 0 0 10px #9933ff;
 }
 
-#enlace-inicio{
-    color: rgb(211, 208, 208);
+#enlace-inicio {
+    color: #9933ff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95em;
+    transition: all 0.3s ease;
+    display: block;
+    margin-top: 15px;
 }
-   
 
-
+#enlace-inicio:hover {
+    text-shadow: 0 0 10px #9933ff;
+}
