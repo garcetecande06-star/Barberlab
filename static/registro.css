@@ -18,33 +18,25 @@ body {
     background-color: #161b22;
     padding: 45px 40px;
     border-radius: 20px;
-    box-shadow: 0 0 20px #0000004D;
     text-align: center;
     position: relative;
 }
 
 .register-form::before {
-    content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     border-radius: 20px;
-    background: linear-gradient(45deg, #9933ff, #c084fc, #9933ff);
-    background-size: 400% 400%;
-    animation: glowing-border 20s linear infinite;
-    opacity: 0.2;
-    transition: opacity 0.4s ease;
-    z-index: -1;
 }
 
 h2 {
     font-size: 2.2em;
     font-weight: 700;
-    color: #9933ff;
+    color: #3498db;
     margin-bottom: 30px;
-    text-shadow: 0 0 5px #9933ff, 0 0 10px #9933ff;
+    text-shadow: 0 0 5px #9933ff, 0 0 10px #3498db;
 }
 
 .input-group {
@@ -56,7 +48,6 @@ label {
     display: block;
     font-weight: 500;
     margin-bottom: 10px;
-    color: #f0f4f7;
     font-size: 1em;
 }
 
@@ -66,22 +57,12 @@ input[type="password"],
 input[type="tel"] {
     width: 100%;
     padding: 12px 15px;
-    border: 1px solid #9933ff;
+    border: 1px solid #3498db;
     border-radius: 10px;
     box-sizing: border-box;
     font-size: 1em;
-    color: #f0f4f7;
-    background-color: transparent;
+    background-color: aliceblue;
     transition: all 0.3s ease;
-}
-
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus,
-input[type="tel"]:focus {
-    border-color: #9933ff;
-    box-shadow: 0 0 0 3px #9933FF4D;
-    outline: none;
 }
 
 .register-button {
@@ -93,15 +74,8 @@ input[type="tel"]:focus {
     font-size: 1.1em;
     font-weight: 600;
     color: #f0f4f7;
-    background-color: #9933ff;
-    transition: all 0.3s ease;
-    margin-top: 25px;
-    box-shadow: 0 0 15px rgba(153, 51, 255, 0.4);
-}
-
-.register-button:hover {
-    box-shadow: 0 0 20px rgba(153, 51, 255, 0.6);
-    transform: translateY(-3px);
+    background: #3498db;
+    background-size: 200% auto;
 }
 
 .login-link {
@@ -111,27 +85,15 @@ input[type="tel"]:focus {
 }
 
 .login-link a {
-    color: #9933ff;
+    color: #3498db;
     text-decoration: none;
     font-weight: 600;
-    transition: all 0.3s ease;
 }
 
 .login-link a:hover {
-    color: #9933ff;
-    text-shadow: 0 0 10px #9933ff;
-}
-
-#enlace-inicio {
-    color: #9933ff;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.95em;
-    transition: all 0.3s ease;
-    display: block;
-    margin-top: 15px;
+    text-shadow: 0 0 10px #3498db; 
 }
 
 #enlace-inicio:hover {
-    text-shadow: 0 0 10px #9933ff;
+    text-shadow: 0 0 10px #3498db; 
 }

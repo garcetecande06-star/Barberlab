@@ -40,9 +40,8 @@ body {
 h1 {
     font-size: 2.2em;
     font-weight: 700;
-    color: #9933ff;
+    color: #3498db;
     margin-bottom: 30px;
-    text-shadow: 0 0 5px #9933ff, 0 0 10px #9933ff;
 }
 
 .input-group {
@@ -54,7 +53,6 @@ label {
     display: block;
     font-weight: 500;
     margin-bottom: 10px;
-    color: #f0f4f7;
     font-size: 1em;
 }
 
@@ -63,21 +61,12 @@ select,
 textarea {
     width: 100%;
     padding: 12px 15px;
-    border: 1px solid #9933ff;
+    border: 1px solid #3498db;
     border-radius: 10px;
     box-sizing: border-box;
     font-size: 1em;
-    color: #f0f4f7;
-    background-color: transparent;
+    background-color: aliceblue;
     transition: all 0.3s ease;
-}
-
-input:focus,
-select:focus,
-textarea:focus {
-    border-color: #9933ff;
-    box-shadow: 0 0 0 3px rgba(153, 51, 255, 0.3);
-    outline: none;
 }
 
 textarea {
@@ -94,15 +83,8 @@ textarea {
     font-size: 1.1em;
     font-weight: 600;
     color: #f0f4f7;
-    background-color: #9933ff;
-    transition: all 0.3s ease;
-    margin-top: 25px;
-    box-shadow: 0 0 15px rgba(153, 51, 255, 0.4);
-}
-
-.btn-futurista:hover {
-    box-shadow: 0 0 20px rgba(153, 51, 255, 0.6);
-    transform: translateY(-3px);
+    background: #3498db;
+    background-size: 200% auto;
 }
 
 @media (max-width: 768px) {

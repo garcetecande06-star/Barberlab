@@ -26,9 +26,9 @@ body {
 h2 {
     font-size: 2.2em;
     font-weight: 700;
-    color: #5865f2;
+    color: #3498db;
     margin-bottom: 30px;
-    text-shadow: 0 0 5px #5865f2, 0 0 10px #5865f2;
+    text-shadow: 0 0 5px #3498db, 0 0 10px #5865f2;
 }
 
 .input-group {
@@ -40,7 +40,6 @@ label {
     display: block;
     font-weight: 500;
     margin-bottom: 10px;
-    color: #f0f4f7;
     font-size: 1em;
 }
 
@@ -48,20 +47,10 @@ input[type="text"],
 input[type="password"] {
     width: 100%;
     padding: 12px 15px;
-    border: 1px solid #5865f2;
+    border: 1px solid #3498db;
     border-radius: 10px;
     box-sizing: border-box;
     font-size: 1em;
-    color: #f0f4f7;
-    background-color: transparent;
-    transition: all 0.3s ease;
-}
-
-input[type="text"]:focus,
-input[type="password"]:focus {
-    border-color: #9933ff;
-    box-shadow: 0 0 0 3px rgba(153, 51, 255, 0.3);
-    outline: none;
 }
 
 .login-button {
@@ -73,15 +62,8 @@ input[type="password"]:focus {
     font-size: 1.1em;
     font-weight: 600;
     color: #f0f4f7;
-    background: linear-gradient(45deg, #5865f2, #9933ff);
+    background: #3498db;
     background-size: 200% auto;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 15px;
-}
-
-.login-button:hover {
-    background-position: right center;
-    box-shadow: 0 0 20px rgba(88, 101, 242, 0.6);
 }
 
 @keyframes glowing-border {
@@ -90,11 +72,8 @@ input[type="password"]:focus {
     100% { background-position: 0% 50%; }
 }
 
-
 .error-message {
-    background-color: #1a0808;
     color: #ff5252;
-    border: 1px solid #ff5252;
     border-radius: 10px;
     padding: 15px 20px;
     margin-bottom: 25px;
@@ -102,8 +81,6 @@ input[type="password"]:focus {
     font-size: 1em;
     font-weight: 500;
     position: relative;
-    box-shadow: 0 0 10px rgba(255, 82, 82, 0.4);
-    animation: pulse-red 2s infinite;
 }
 
 .error-message ul {
@@ -112,13 +89,6 @@ input[type="password"]:focus {
     margin: 0;
 }
 
-@keyframes pulse-red {
-    0% { box-shadow: 0 0 10px rgba(255, 82, 82, 0.4); }
-    50% { box-shadow: 0 0 20px rgba(255, 82, 82, 0.6); }
-    100% { box-shadow: 0 0 10px rgba(255, 82, 82, 0.4); }
-}
-
-
 .links-container {
     margin-top: 30px;
     font-size: 0.95em;
@@ -126,7 +96,7 @@ input[type="password"]:focus {
 
 .signup-link,
 .home-link {
-    color: #95a5a6; 
+    color: #cccccc; 
     margin: 0;
     text-align: center;
 }
@@ -138,15 +108,13 @@ input[type="password"]:focus {
 
 .signup-link a,
 .home-link a {
-    color: #5865f2;
+    color: #3498db;
     text-decoration: none;
     font-weight: 600;
-    transition: all 0.3s ease;
 }
 
 
 .signup-link a:hover,
 .home-link a:hover {
-    color: #9933ff; 
-    text-shadow: 0 0 10px #9933ff; 
+    text-shadow: 0 0 10px #3498db; 
 }

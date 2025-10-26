@@ -8,60 +8,43 @@ body {
 }
 
 .container {
-    max-width: 1000px;
-    margin: 0 auto;
     background-color: #161b22; 
-    padding: 30px;
     border-radius: 20px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
 }
 
 #navbar {
-    background-color: transparent;
     padding: 10px 0;
     margin-bottom: 30px;
 }
 
 #navbar ul {
     list-style: none;
-    display: flex;
-    justify-content: flex-start; 
     padding: 0;
     margin: 0;
 }
 
-#navbar li {
-    margin: 0;
-}
-
 .btn-futurista {
+    background-color: #3498db;
     display: inline-block;
     color: #f0f4f7; 
     text-decoration: none;
     font-weight: 600;
     font-size: 0.95rem;
     padding: 8px 20px;
-    border: 2px solid #9933ff; 
+    border: 2px; 
     border-radius: 50px; 
-    background-color: transparent; 
-    transition: all 0.3s ease;
 }
 
 .btn-futurista:hover {
-    color: #ffffff; 
-    background-color: #9933ff; 
-    text-shadow: none;
-    box-shadow: 0 0 15px rgba(153, 51, 255, 0.6); 
-    transform: translateY(-2px); 
+    background-color: #2579b0; 
 }
 
 h1 {
     text-align: center;
     font-size: 2.8rem; 
     font-weight: 700;
-    color: #9933ff; 
+    color: #3498db; 
     margin-bottom: 20px;
-    text-shadow: 0 0 10px #9933ff, 0 0 20px #9933ff; 
 }
 
 .reserve-link {
@@ -76,62 +59,42 @@ h1 {
     text-decoration: none;
     font-weight: 600;
     color: #f0f4f7;
-    background-color: #9933ff; 
-    background-size: 200% auto;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 15px rgba(153, 51, 255, 0.4);
+    background-color: #3498db; 
 }
 
 .reserve-link a:hover {
-    background-position: right center; 
-    box-shadow: 0 0 20px rgba(153, 51, 255, 0.6);
-    transform: translateY(-3px); 
+    background-color: #2579b0; 
 }
 
 table {
     width: 100%;
-    border-collapse: separate; 
+    border-collapse: separate;
     border-spacing: 0;
-    border-radius: 12px; 
-    overflow: hidden; 
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
-    margin-top: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 thead th {
     padding: 18px 15px;
     font-size: 1.1rem;
-    font-weight: 600;
     color: #ffffff;
-    background-color: #9933ff;
+    background-color: #3498db;
     text-align: center;
-    border: none; 
 }
 
 tbody td {
     padding: 16px 15px;
-    background-color: #161b22; 
-    color: #f0f4f7; 
+    background-color: #161b22;
     text-align: center;
-    border-bottom: 2px solid #0d1117; 
-}
-
-tbody tr:last-child td {
-    border-bottom: none; 
-}
-
-tbody tr:hover td {
-    background-color: #222a36; 
 }
 
 .no-data {
     padding: 2.5rem;
     text-align: center;
     font-style: italic;
-    font-weight: 500;
     color: #95a5a6; 
     font-size: 1.1rem;
-    background-color: #161b22; 
 }
 
 .btn-danger {
@@ -142,12 +105,8 @@ tbody tr:hover td {
     font-weight: 600;
     color: #f0f4f7;
     background-color: #ff5252; 
-    box-shadow: 0 0 10px rgba(255, 82, 82, 0.4); 
-    transition: all 0.3s ease;
 }
 
 .btn-danger:hover {
     background-color: #d63031; 
-    box-shadow: 0 0 15px rgba(255, 82, 82, 0.6); 
-    transform: scale(1.05) translateY(-2px); 
 }
