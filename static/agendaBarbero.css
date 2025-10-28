@@ -122,7 +122,6 @@ td button {
     box-sizing: border-box;
     text-align: center;
 
-    /* PROPIEDADES CLAVE PARA CENTRADO FINAL */
     line-height: 18px;
     height: 28px;
     display: inline-block;
@@ -147,12 +146,12 @@ td button {
 }
 
 .btn-ausente {
-    background-color: #6c757d;
+    background-color: #e74c3c;
     color: #ffffff;
 }
 
 .btn-ausente:hover {
-    background-color: #7b8590;
+    background-color: #c0392b;
 }
 
 td button:disabled {
@@ -161,20 +160,20 @@ td button:disabled {
 }
 
 .btn-pendiente.seleccionado {
-    border: 2px solid #fff;
-    box-shadow: 0 0 10px rgba(74, 85, 104, 0.8);
+    background-color: #5d6c7e;
+    box-shadow: 0 0 10px rgba(93, 108, 126, 0.8), inset 0 0 5px rgba(255, 255, 255, 0.4);
     opacity: 1;
 }
 
 .btn-atendido.seleccionado {
-    border: 2px solid #fff;
-    box-shadow: 0 0 10px rgba(52, 152, 219, 0.8);
+    background-color: #2579b0;
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.8), inset 0 0 5px rgba(255, 255, 255, 0.4);
     opacity: 1;
 }
 
 .btn-ausente.seleccionado {
-    border: 2px solid #fff;
-    box-shadow: 0 0 10px rgba(108, 117, 125, 0.8);
+    background-color: #c0392b;
+    box-shadow: 0 0 10px rgba(231, 76, 60, 0.8), inset 0 0 5px rgba(255, 255, 255, 0.4);
     opacity: 1;
 }
 
