@@ -24,8 +24,9 @@ body {
     text-decoration: none;
     font-size: 0.95rem;
     padding: 8px 20px;
-    border: 2px;
+    border: none;
     border-radius: 50px;
+    font-weight: 600;
 }
 
 .navbar-menu a:hover {
@@ -86,7 +87,8 @@ table {
     border-spacing: 0;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    table-layout: auto;
 }
 
 th {
@@ -106,3 +108,78 @@ td {
     border-bottom: 2px solid #0d1117;
 }
 
+td button {
+    padding: 5px 8px;
+    margin: 2px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.8rem;
+    transition: background-color 0.3s ease;
+    width: 80px;
+    white-space: nowrap;
+    box-sizing: border-box;
+    text-align: center;
+
+    /* PROPIEDADES CLAVE PARA CENTRADO FINAL */
+    line-height: 18px;
+    height: 28px;
+    display: inline-block;
+}
+
+.btn-pendiente {
+    background-color: #4a5568;
+    color: #ffffff;
+}
+
+.btn-pendiente:hover {
+    background-color: #5d6c7e;
+}
+
+.btn-atendido {
+    background-color: #3498db;
+    color: #ffffff;
+}
+
+.btn-atendido:hover {
+    background-color: #2579b0;
+}
+
+.btn-ausente {
+    background-color: #6c757d;
+    color: #ffffff;
+}
+
+.btn-ausente:hover {
+    background-color: #7b8590;
+}
+
+td button:disabled {
+    cursor: default;
+    opacity: 0.6;
+}
+
+.btn-pendiente.seleccionado {
+    border: 2px solid #fff;
+    box-shadow: 0 0 10px rgba(74, 85, 104, 0.8);
+    opacity: 1;
+}
+
+.btn-atendido.seleccionado {
+    border: 2px solid #fff;
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.8);
+    opacity: 1;
+}
+
+.btn-ausente.seleccionado {
+    border: 2px solid #fff;
+    box-shadow: 0 0 10px rgba(108, 117, 125, 0.8);
+    opacity: 1;
+}
+
+.btn-atendido.seleccionado:hover,
+.btn-ausente.seleccionado:hover,
+.btn-pendiente.seleccionado:hover {
+    cursor: default;
+}

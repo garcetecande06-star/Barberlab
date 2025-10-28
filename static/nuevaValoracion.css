@@ -85,10 +85,34 @@ textarea {
     color: #f0f4f7;
     background: #3498db;
     background-size: 200% auto;
+    margin-bottom: 15px;
 }
 
 @media (max-width: 768px) {
     .login-form {
         padding: 30px 20px;
     }
+}
+
+.back-button {
+    display: block !important; 
+    width: 100% !important;
+    box-sizing: border-box !important; 
+    
+    padding: 14px !important;
+    border: none !important;
+    border-radius: 50px !important;
+    cursor: pointer !important;
+    font-size: 1.1em !important;
+    font-weight: 600 !important;
+    color: #f0f4f7 !important;
+    background-color: #3498db !important;
+    
+    text-decoration: none !important;
+    text-align: center !important;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #2579b0 !important;
 }

@@ -2,40 +2,43 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nueva Valoración</title>
-    <link rel="stylesheet" href="{% static 'nuevaValoracion.css' %}">
+    <link rel="stylesheet" href="{% static 'nuevaValoracion.css' %}" />
 </head>
 <body>
     <div class="login-container">
-        <div class="login-form">
-            <h1>Deja tu valoración</h1>
-            <form method="post">
-                {% csrf_token %}
-                <div class="input-group">
-                    <label for="id_nombre_cliente">Tu nombre</label>
-                    {{ form.nombre_cliente }}
-                </div>
-                <div class="input-group">
-                    <label for="id_barbero">Barbero</label>
-                    {{ form.barbero }}
-                </div>
-                <div class="input-group">
-                    <label for="id_servicio">Servicio</label>
-                    {{ form.servicio }}
-                </div>
-                <div class="input-group">
-                    <label for="id_puntuacion">Puntuación</label>
-                    {{ form.puntuacion }}
-                </div>
-                <div class="input-group">
-                    <label for="id_comentario">Comentario</label>
-                    {{ form.comentario }}
-                </div>
-                <button type="submit" class="btn-futurista">Enviar Valoración</button>
-            </form>
+    <div class="login-form">
+        <h1>Deja tu valoración</h1>
+        <form method="post">
+        {% csrf_token %}
+        <div class="input-group">
+            <label for="id_nombre_cliente">Tu nombre</label> 
+            {{ form.nombre_cliente }} 
         </div>
+        <div class="input-group">
+            <label for="id_barbero">Barbero</label> 
+            {{ form.barbero }} 
+        </div>
+        <div class="input-group">
+            <label for="id_servicio">Servicio</label> 
+            {{ form.servicio }} 
+        </div>
+        
+        <div class="input-group">
+        <label for="id_puntuacion">Puntuación</label> 
+        {{ form.puntuacion }} 
+        </div>
+        <div class="input-group">
+        <label for="id_comentario">Comentario</label> 
+        {{ form.comentario }} 
+        </div>
+        <button type="submit" class="btn-futurista">Enviar Valoración</button>
+        <a href="http://127.0.0.1:8000/" class="back-button"
+            >Volver al Inicio</a >
+        </form>
+    </div>
     </div>
 </body>
 </html>

@@ -8,15 +8,12 @@
 <body>
     <header class="navbar-container">
         <ul class="navbar-menu">
-            <li><a href="http://127.0.0.1:8000">Volver al inicio </a></li>
+            <li><a href="http://127.0.0.1:8000" class="back-button">Volver al inicio</a></li>
         </ul>
     </header>
-
     <main>
         <h1>Agenda de Turnos</h1>
-
-        <form method="get" action="" style="margin-bottom: 20px;">
-            <label for="barbero">Filtrar por Barbero:</label>
+        <form method="get" action="">
             <select name="barbero" id="barbero" onchange="this.form.submit()">
                 <option value="">Todos</option>
                 {% for barbero in barberos %}
@@ -26,7 +23,6 @@
                 {% endfor %}
             </select>
         </form>
-
         <table>
             <thead>
                 <tr>
@@ -35,25 +31,77 @@
                     <th>Cliente</th>
                     <th>Barbero</th>
                     <th>Servicio</th>
+                    <th>Estado / Acción</th>
                 </tr>
             </thead>
             <tbody>
                 {% for turno in turnos %}
-                    <tr class="{{ turno.estado }}">
+                    <tr data-turno-id="{{ turno.id }}">
                         <td>{{ turno.fechaHora|date:"d/m/Y" }}</td>
                         <td>{{ turno.fechaHora|date:"H:i" }}</td>
                         <td>{{ turno.cliente }}</td>
                         <td>{{ turno.barbero }}</td>
                         <td>{{ turno.servicio }}</td>
+                        <td class="estado-accion-celda">
+                            <button 
+                                class="btn-pendiente" 
+                                onclick="marcarEstado(this, 'PENDIENTE')">
+                                Pendiente
+                            </button>
+                            <button 
+                                class="btn-atendido" 
+                                onclick="marcarEstado(this, 'ATENDIDO')">
+                                Atendido
+                            </button>
+                            <button 
+                                class="btn-ausente" 
+                                onclick="marcarEstado(this, 'AUSENTE')">
+                                Ausente
+                            </button>
+                        </td>
                     </tr>
                 {% empty %}
                     <tr>
-                        <td colspan="5">No hay turnos disponibles.</td>
+                        <td colspan="6">No hay turnos disponibles.</td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
     </main>
+    <script>
+        function marcarEstado(botonClickeado, estado) {
+            const celdaAccion = botonClickeado.parentNode;
+            const fila = botonClickeado.closest('tr');
+            const turnoId = fila.getAttribute('data-turno-id');
+            const botones = celdaAccion.querySelectorAll('button');
+            botones.forEach(btn => {
+                btn.classList.remove('seleccionado');
+            });
+            botonClickeado.classList.add('seleccionado');
+            localStorage.setItem('turno_estado_' + turnoId, estado); 
+        }
+        function cargarEstadosGuardados() {
+            const filasTurno = document.querySelectorAll('tbody tr[data-turno-id]');
+            
+            filasTurno.forEach(fila => {
+                const turnoId = fila.getAttribute('data-turno-id');
+                const estadoGuardado = localStorage.getItem('turno_estado_' + turnoId) || 'PENDIENTE';
+                
+                let botonASeleccionar;
+                if (estadoGuardado === 'ATENDIDO') {
+                    botonASeleccionar = fila.querySelector('.btn-atendido');
+                } else if (estadoGuardado === 'AUSENTE') {
+                    botonASeleccionar = fila.querySelector('.btn-ausente');
+                } else {
+                    botonASeleccionar = fila.querySelector('.btn-pendiente');
+                }
+                if (botonASeleccionar) {
+                    marcarEstado(botonASeleccionar, estadoGuardado); 
+                }
+            });
+        }
+        document.addEventListener('DOMContentLoaded', cargarEstadosGuardados);
+    </script>
+    
 </body>
 </html>
-
