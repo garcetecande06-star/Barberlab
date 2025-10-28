@@ -121,7 +121,6 @@ td button {
     white-space: nowrap;
     box-sizing: border-box;
     text-align: center;
-
     line-height: 18px;
     height: 28px;
     display: inline-block;
@@ -129,7 +128,7 @@ td button {
 
 .btn-pendiente {
     background-color: #4a5568;
-    color: #ffffff;
+    color: #f0f4f7;
 }
 
 .btn-pendiente:hover {
@@ -138,7 +137,7 @@ td button {
 
 .btn-atendido {
     background-color: #3498db;
-    color: #ffffff;
+    color: #f0f4f7;
 }
 
 .btn-atendido:hover {
@@ -147,7 +146,7 @@ td button {
 
 .btn-ausente {
     background-color: #e74c3c;
-    color: #ffffff;
+    color: #f0f4f7;
 }
 
 .btn-ausente:hover {
@@ -160,20 +159,23 @@ td button:disabled {
 }
 
 .btn-pendiente.seleccionado {
-    background-color: #5d6c7e;
-    box-shadow: 0 0 10px rgba(93, 108, 126, 0.8), inset 0 0 5px rgba(255, 255, 255, 0.4);
+    background-color: #3d4a5c;
+    box-shadow: 0 0 12px rgba(93, 108, 126, 0.9), inset 0 0 4px rgba(0, 0, 0, 0.4);
+    border: 1px solid #fff;
     opacity: 1;
 }
 
 .btn-atendido.seleccionado {
-    background-color: #2579b0;
-    box-shadow: 0 0 10px rgba(52, 152, 219, 0.8), inset 0 0 5px rgba(255, 255, 255, 0.4);
+    background-color: #1c5f88;
+    box-shadow: 0 0 12px rgba(52, 152, 219, 0.9), inset 0 0 4px rgba(0, 0, 0, 0.4);
+    border: 1px solid #fff;
     opacity: 1;
 }
 
 .btn-ausente.seleccionado {
-    background-color: #c0392b;
-    box-shadow: 0 0 10px rgba(231, 76, 60, 0.8), inset 0 0 5px rgba(255, 255, 255, 0.4);
+    background-color: #a73024;
+    box-shadow: 0 0 12px rgba(231, 76, 60, 0.9), inset 0 0 4px rgba(0, 0, 0, 0.4);
+    border: 1px solid #fff;
     opacity: 1;
 }
 
