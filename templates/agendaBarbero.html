@@ -22,6 +22,13 @@
                     </option>
                 {% endfor %}
             </select>
+
+            <select id="filtro-estado">
+                <option value="">Todos</option>
+                <option value="PENDIENTE">Pendiente</option>
+                <option value="ATENDIDO">Atendido</option>
+                <option value="AUSENTE">Ausente</option>
+            </select>
         </form>
         <table>
             <thead>
@@ -74,15 +81,14 @@
             const fila = botonClickeado.closest('tr');
             const turnoId = fila.getAttribute('data-turno-id');
             const botones = celdaAccion.querySelectorAll('button');
-            botones.forEach(btn => {
-                btn.classList.remove('seleccionado');
-            });
+            botones.forEach(btn => btn.classList.remove('seleccionado'));
             botonClickeado.classList.add('seleccionado');
             localStorage.setItem('turno_estado_' + turnoId, estado); 
+            filtrarPorEstado(); // Actualiza la visibilidad al cambiar estado
         }
+
         function cargarEstadosGuardados() {
             const filasTurno = document.querySelectorAll('tbody tr[data-turno-id]');
-            
             filasTurno.forEach(fila => {
                 const turnoId = fila.getAttribute('data-turno-id');
                 const estadoGuardado = localStorage.getItem('turno_estado_' + turnoId) || 'PENDIENTE';
@@ -100,7 +106,24 @@
                 }
             });
         }
-        document.addEventListener('DOMContentLoaded', cargarEstadosGuardados);
+
+        function filtrarPorEstado() {
+            const estadoFiltro = document.getElementById('filtro-estado').value;
+            const filas = document.querySelectorAll('tbody tr[data-turno-id]');
+            
+            filas.forEach(fila => {
+                const turnoId = fila.getAttribute('data-turno-id');
+                const estadoGuardado = localStorage.getItem('turno_estado_' + turnoId) || 'PENDIENTE';
+
+                fila.style.display = (!estadoFiltro || estadoGuardado === estadoFiltro) ? '' : 'none';
+            });
+        }
+
+        document.getElementById('filtro-estado').addEventListener('change', filtrarPorEstado);
+        document.addEventListener('DOMContentLoaded', () => {
+            cargarEstadosGuardados();
+            filtrarPorEstado();
+        });
     </script>
     
 </body>
